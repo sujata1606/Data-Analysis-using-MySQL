@@ -1,0 +1,33 @@
+Basics of MySQL
+
+
+USE demo;
+	-- use the demo db
+  
+SHOW TABLES;
+	-- list all tables
+  
+NULL;
+  -- use NULL when you need to keep empty values for the field.
+  
+NOT NULL;
+  --Obligate to specify particular value for the field.
+ 
+  
+  
+  
+  1.Creating db,table
+  
+  create database demo;
+  create table UserDetails(Name text,
+  -> Designation text,
+   -> Salary int);
+   
+   show tables;
+   
+ 2.Inserting records in table
+ 
+  insert into UserDetails(Name, Designation, Salary) values('Jim', 'Data Analyst', 150000);
+  
+  
+  
