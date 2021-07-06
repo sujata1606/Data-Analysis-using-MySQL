@@ -1,5 +1,3 @@
-
-
 1. Counting Rows & Items
 /* How many total employees in this company */
   select count(*) from UserDetails;
