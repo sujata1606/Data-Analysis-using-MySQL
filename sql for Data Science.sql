@@ -1,4 +1,8 @@
-Primary key : To reduce redundancy of data.
+1.GroupBy, OrderBy, HavingClause 
+
+/*Primary key : To reduce redundancy of data.*/
+/* Group By is used to group the data*/
+/* Order By is used to order the in a ascending/decending order*/
 
 create database mydemo_final;
 
@@ -33,11 +37,11 @@ INSERT INTO dataofcustomer VALUES('C00008','Nisha',null,'Damle','Mumbai',43,'795
 INSERT INTO dataofcustomer VALUES('C00009','Abhishek',null,'Dutta','Kolkata',67,'9856198761','Service','1973-05-22');
 INSERT INTO dataofcustomer  VALUES('C00010','Shankar',null,'Nair','Chennai',90,'8765489076','Service','1976-07-12');
 
-show tables;
+   show tables;
 
 select * from dataofcustomer;
 
-#Aggregate Functions
+/*Aggregate Functions*/
 
 select min(age) from dataofcustomer;
 select fname from dataofcustomer where age = 18;
@@ -46,7 +50,6 @@ select fname from dataofcustomer where age = 90;
 
 select  count(*) from dataofcustomer;
 
-
 select count(age) as total_customer from dataofcustomer;
 
 select count(age) as customer_from_Delhi from dataofcustomer where city ="Delhi";
@@ -54,34 +57,19 @@ select count(age) as customer_from_Delhi from dataofcustomer where city ="Delhi"
 select avg(age) as average_age from dataofcustomer;
 
 select sum(age) as sum_of_age from dataofcustomer;
+
 select count(fname),city from dataofcustomer group by city;
+
+having clause:
 
 select count(fname),city from dataofcustomer group by city having count(fname)>2;
 
 select count(fname),city from dataofcustomer group by city having count(fname)=2;
 
-select count(fname),city from dataofcustomer group by city having count(fname)=1;
 
-select count(fname),city from dataofcustomer group by city having count(fname)>2;
-select count(fname),city from dataofcustomer group by city having count(fname)<2;
-
-select count(fname),city from dataofcustomer group by city having count(fname)!=4;
-
-
-CREATE TABLE customer
-   (
-       custid VARCHAR(6),
-       fname VARCHAR(30),
-       mname VARCHAR(30),
-       ltname VARCHAR(30),
-       city VARCHAR(15),
-       mobileno VARCHAR(10),
-       occupation VARCHAR(10),
-       dob DATE,
-      CONSTRAINT customer_custid_pk PRIMARY KEY(custid)   
-   );   
-
-
+/* CONSTRAINT are used reduce the redundancy of data making a coonection between two tables
+   FOREIGN KEY used to join two particular tables
+*/
 
 CREATE TABLE account
    (
@@ -116,108 +104,17 @@ select * from account;
 
 
 select count(*), astatus from account group by astatus  ;
-
-
  
 select count(*), astatus from account group by astatus  having count(atype)=7;
 
 select count(*) from account;
-
-
-
 select count(*) from customer;
 select count(*) from account;
+
 select fname,acnumber from customer inner join account on customer.custid = account.custid;
 select count(fname) from customer inner join account on customer.custid = account.custid;
 
 
 select count(custid) from customer group by city;
-
-
-
-
 select * from dataofcustomer;
-
-
-
 select * from dataofcustomer where custid in (select custid from dataofcustomer where age>=45);
-
-CREATE TABLE customer
-   (
-       custid VARCHAR(6)  PRIMARY KEY,
-       fname VARCHAR(50),
-       mname VARCHAR(30),
-       ltname VARCHAR(30),
-       city VARCHAR(15),
-       age int(10),
-       mobileno VARCHAR(10),
-       occupation VARCHAR(10),
-       dob DATE
-         
-   );  
-   
-drop table customer;
-show tables;
-
-INSERT INTO customer
-SELECT * FROM  dataofcustomer
-WHERE age>=45;
-
-
-select * from customer;
-
-select * from dataofcustomer;
-
-UPDATE customer
-SET age = 47
-   WHERE age in  (select age from dataofcustomer where age=45);
-
-
-DELETE FROM customer
-   WHERE AGE IN (SELECT AGE FROM dataofCUSTOMER
-      WHERE AGE >= 27 );
-      
-      
-select * from dataofcustomer;
-select * from democustomer;
-
-SELECT * FROM customer
-WHERE custid IN (SELECT  custid FROM customer 
-                      WHERE age>25);
-                      
-                      
-SELECT  custid,fname FROM customer 
-                      WHERE age>25;
-					
-                    
-select * from dataofcustomer;
-  
-select custid from account where custid = any (select custid from dataofcustomer where city = 'Delhi'); 
-
-select custid from account where custid = all (select custid from dataofcustomer where city = 'Delhi'); 
-
-
-select custid from dataofcustomer where city = 'Delhi';
-
-select * from account;			
-
-
-SELECT custid, fname,age,
-CASE
-    WHEN age > 30 THEN 'The age is greater than 30'
-    WHEN age = 30 THEN 'The age is 30'
-    ELSE 'The age is not group of 30'
-END AS Age
-FROM dataofcustomer;
-
-
-SELECT fname, city, age
-FROM dataofcustomer
-ORDER BY
-(CASE
-    WHEN City IS NULL THEN "no city"
-    ELSE City
-END);
-		
-
-	
