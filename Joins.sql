@@ -38,7 +38,8 @@ CREATE TABLE customer
       
       
     );
-
+    
+    show tables;
 
 INSERT INTO customer VALUES('C00001','Ramesh','Chandra','Sharma','Delhi','9543198345','Service','1976-12-06');
 INSERT INTO customer VALUES('C00002','Avinash','Sunder','Minha','Delhi','9876532109','Service','1974-10-16');
@@ -71,5 +72,10 @@ select count(*) from account;
 
 select fname,acnumber from customer inner join account on customer.custid = account.custid;
 select fname from customer inner join account on customer.custid = account.custid; 
+
+
+
+2. LEFT JOIN : The LEFT JOIN helps to fetch all records from the left table and the matching records 
+from the right table
 
 
