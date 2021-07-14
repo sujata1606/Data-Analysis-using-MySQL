@@ -48,6 +48,9 @@
     select * from UserDetails where Designation like 'D%';
     
  7. Grouping, Rolling up and Filtering 
+ 
+    Gropu By : Group By statement  helps to groups rows which has similar properties.
+    
     /* To get count of unique Designation */
    select count(*) as Frequency, Designation from UserDetails group by Designation;
    
