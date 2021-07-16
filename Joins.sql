@@ -165,4 +165,36 @@ ON  account.custid = customer.custid;
 3. FULL JOIN : The FULL OUTER JOIN helps to fetch all the records from both the table whether there is 
 a match or not.
 
+select * from customer full join account on account.custid = customer.custid;
+
+Using Union:
+
+SELECT * FROM account
+LEFT JOIN customer ON account.custid = customer.custid
+UNION
+SELECT * FROM account
+RIGHT JOIN customer ON account.custid = customer.custid;
+
+4. SELF JOIN: A self helps to join with itself.
+
+CREATE TABLE student
+   (
+    student_id VARCHAR(6),
+    name VARCHAR(30),
+    course_id VARCHAR(30),
+    duration int
+   );
+
+
+INSERT INTO student VALUES('1','Asif',2,4);
+INSERT INTO student VALUES('2','Atul',1,4);
+INSERT INTO student VALUES('1','Asif',1,4);
+INSERT INTO student VALUES('2','Atul',3,4);
+INSERT INTO student VALUES('5','Jasmin',1,4);
+INSERT INTO student VALUES('6','Adhiti',1,4);
+
+SELECT  s1.student_id, s1.name,s1.course_id  
+FROM student AS s1, student s2  
+WHERE s1.student_id=s2.student_id and s1.course_id<>s2.course_id;  
+
 
