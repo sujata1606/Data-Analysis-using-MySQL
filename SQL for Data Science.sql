@@ -3,7 +3,6 @@
 /*Primary key : To reduce redundancy of data.*/
 /* Group By is used to group the data*/
 /* Order By is used to order the in a ascending/decending order*/
-
 create database mydemo_final;
 
 use mydemo_final;
